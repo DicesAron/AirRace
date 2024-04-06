@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] Transform[] nezet; //nézet valtozo
-    [SerializeField] float seb; //sebesség változó
+    public Transform target; //nézet valtozo
 
-    private int index = 1;
+
+    public float kameramozgas = 0.125f;
     private Vector3 cam;
     // Start is called before the first frame update
     void Start()
@@ -18,17 +18,12 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //2 kölönbözõ nézet
-        if (Input.GetKeyDown(KeyCode.Alpha1)) index = 0;
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) index = 1;
-
-        //A cam et a releváns nézethet irányítja
-        cam = nezet[index].position;
     }
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, cam, Time.deltaTime * seb);
-        transform.forward = nezet[index].forward;
+        Vector3 campoz = target.position + cam;
+        Vector3 poz = Vector3.Lerp(transform.position, campoz, kameramozgas);
+        transform.position = poz;
     }
 }
