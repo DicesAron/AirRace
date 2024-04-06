@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlaneController : MonoBehaviour
 {
     public float toloeroE = 0.1f;//toloerõ érték
     public float maxToloero = 100f;//Maximális tolóerõ érték
-    public float iranyithatosagE = 25f;//mennyira irányítható a gép (minnél nagyobb annál gyorsabban reagál)
-
+    public float iranyithatosagE = 15f;//mennyira irányítható a gép (minnél nagyobb annál gyorsabban reagál)
+    public float felhajtoero = 200f;//változó ami meghatározza, hogy mekkora felhajtó erõt generáll a vadászgep
 
     private float toloero;
     private float forgas;
     private float emelkedes;
     private float sik;
     Rigidbody repulo;
-
+    [SerializeField] TextMeshProUGUI kijelzo;
     private float iranyithatosag {
         get {
             return (repulo.mass / 10f) * iranyithatosagE; 
@@ -46,7 +46,7 @@ public class PlaneController : MonoBehaviour
     void Update()
     {
         IranyitasInput();
-
+        Kijelzo();
 
     }
 
@@ -57,5 +57,13 @@ public class PlaneController : MonoBehaviour
         repulo.AddTorque(transform.up * sik * iranyithatosag);
         repulo.AddTorque(transform.right * emelkedes * iranyithatosag);
         repulo.AddTorque(transform.forward * forgas * iranyithatosag);
+        repulo.AddForce(Vector3.up * repulo.velocity.magnitude * felhajtoero);
+
+    }
+
+    private void Kijelzo() {
+        kijelzo.text = "Tolóerõ " + toloero.ToString("F0") + "%\n";
+        kijelzo.text += "Sebesség " + (repulo.velocity.magnitude*3.6f).ToString("F0") + "km/h\n";
+        kijelzo.text += "Magasság " + transform.position.y.ToString("F0") + " m";
     }
 }
