@@ -16,7 +16,7 @@ public class lovController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Celpont"))
+        if (other.gameObject.CompareTag("lovedek"))
         {
             Destroy(other.gameObject);
             Debug.Log("Ez mi?");
