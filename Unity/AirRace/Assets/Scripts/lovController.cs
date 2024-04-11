@@ -8,7 +8,7 @@ public class lovController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("lovedek")) {
+        if (collision.collider.CompareTag("Celpont")) {
             Destroy(gameObject);
             Debug.Log("Ez mi? hehe");
         }
@@ -19,7 +19,7 @@ public class lovController : MonoBehaviour
         //if (other.gameObject.CompareTag("lovedek"))
         //{
             Destroy(gameObject);
-            Debug.Log("Ez mi? XD mi a fasz");
+            Debug.Log("");
         //}
     }
 }
