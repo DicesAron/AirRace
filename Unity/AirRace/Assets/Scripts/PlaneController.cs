@@ -13,6 +13,7 @@ public class PlaneController : MonoBehaviour
     private float forgas;
     private float emelkedes;
     private float sik;
+    AudioSource hajtomu;
     Rigidbody repulo;
     [SerializeField] TextMeshProUGUI kijelzo;
     private float iranyithatosag {
@@ -25,6 +26,7 @@ public class PlaneController : MonoBehaviour
     private void Awake()
     {
         repulo = GetComponent<Rigidbody>();//elinduláskor hozzárendeli a repülõ rigidbody át
+        hajtomu = GetComponent<AudioSource>();
     }
 
     private void IranyitasInput() {
@@ -48,7 +50,7 @@ public class PlaneController : MonoBehaviour
     {
         IranyitasInput();
         Kijelzo();
-
+        hajtomu.volume = toloero * 0.001f;
     }
 
     private void FixedUpdate()

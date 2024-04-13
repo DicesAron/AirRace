@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class TankController : MonoBehaviour
 {
+    [SerializeField] ParticleSystem tuz = null;
+    public Renderer atlatszo;
     public int talalat = 0;
     public GameManager gamemanager;
     private int megvolt = 0;
+    private float vege;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +34,12 @@ public class TankController : MonoBehaviour
     {
         if (talalat==5 && megvolt==0)
         {
+            vege = Time.time+30;
+            tuz.Play();
+            atlatszo.enabled = false;
             gamemanager.allas += 1;
             megvolt += 1;
         }
+        
     }
 }
