@@ -21,6 +21,7 @@ public class PlaneController : MonoBehaviour
         }
     }
 
+
     private void Awake()
     {
         repulo = GetComponent<Rigidbody>();//elinduláskor hozzárendeli a repülõ rigidbody át

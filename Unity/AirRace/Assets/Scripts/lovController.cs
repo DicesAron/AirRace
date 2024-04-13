@@ -14,12 +14,5 @@ public class lovController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //if (other.gameObject.CompareTag("lovedek"))
-        //{
-            Destroy(gameObject);
-            Debug.Log("");
-        //}
-    }
+    
 }
