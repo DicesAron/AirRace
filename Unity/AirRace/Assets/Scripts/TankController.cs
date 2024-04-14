@@ -34,12 +34,13 @@ public class TankController : MonoBehaviour
     {
         if (talalat==5 && megvolt==0)
         {
-            vege = Time.time+30;
+            vege = Time.time+10;
             tuz.Play();
             atlatszo.enabled = false;
             gamemanager.allas += 1;
             megvolt += 1;
         }
+        
         
     }
 }
