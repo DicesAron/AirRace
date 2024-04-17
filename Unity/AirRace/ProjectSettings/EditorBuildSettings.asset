@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Regisztacio.unity
+    guid: 8f9883f7869f1cc43b9d9cfe090f8656
+  - enabled: 1
+    path: Assets/Scenes/Belepes.unity
+    guid: 917d1a9fb09c94041a5064993c1a705e
+  - enabled: 1
+    path: Assets/Scenes/JatekMenu.unity
+    guid: 5af14b409395c434098562f272b37bea
   m_configObjects: {}
