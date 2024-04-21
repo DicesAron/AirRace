@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class PlaneController : MonoBehaviour
 {
     public float toloeroE = 0.1f;//toloerõ érték
@@ -22,6 +23,13 @@ public class PlaneController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("palya"))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("sikertelen");
+        }
+    }
 
     private void Awake()
     {

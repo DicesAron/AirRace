@@ -20,4 +20,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JatekMenu.unity
     guid: 5af14b409395c434098562f272b37bea
+  - enabled: 1
+    path: Assets/Scenes/kikepzes.unity
+    guid: 7afa6b34492d0e64a9f65a6bc5c8df2f
+  - enabled: 1
+    path: Assets/Scenes/info.unity
+    guid: e48796764f956e346b44b7a9898c7666
+  - enabled: 1
+    path: Assets/Scenes/sikeres.unity
+    guid: 0a10c5a120bb0c84e807abaabd09f500
+  - enabled: 1
+    path: Assets/Scenes/verseny.unity
+    guid: 3d69d6bdd478bb445b1cd38953cf4f31
+  - enabled: 1
+    path: Assets/Scenes/sikertelen.unity
+    guid: 51486b58c88795541b4c4ba69f6e3359
   m_configObjects: {}

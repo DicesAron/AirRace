@@ -30,4 +30,20 @@ public class SceneLoader : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Fomenu");
     }
+    
+
+    public void KikepzesLoad()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("kikepzes");
+    }
+
+    public void InfoLoad()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("info");
+    }
+
+    public void VersenyLoad()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("verseny");
+    }
 }
