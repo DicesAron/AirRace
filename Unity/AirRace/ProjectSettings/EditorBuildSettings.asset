@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Fomenu.unity
     guid: 9c2a4d7cdbc89c84bad8d07fd36e7cff
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/palya1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Regisztacio.unity

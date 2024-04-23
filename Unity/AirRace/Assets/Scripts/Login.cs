@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using TMPro;
 using MySql.Data;
@@ -11,6 +12,7 @@ public class Login : MonoBehaviour
     string pass;
     string nev;
     string felhasznalo;
+    public string userId;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,7 @@ public class Login : MonoBehaviour
         try
         {
             conn.Open();
-            string sql = $"SELECT `Nev`,`Pass` FROM `user` WHERE `Nev` = '{nev}'";
+            string sql = $"SELECT `ID`,`Pass` FROM `user` WHERE `Nev` = '{nev}'";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -57,7 +59,11 @@ public class Login : MonoBehaviour
         {
             if (felhasznalo.Split(' ')[1]==pass)
             {
+                StreamWriter fel = new StreamWriter("Assets/felh/user.txt");
+                fel.Write(felhasznalo.Split(' ')[0]);
+                fel.Close();
                 UnityEngine.SceneManagement.SceneManager.LoadScene("JatekMenu");
+                
             }
             else
             {

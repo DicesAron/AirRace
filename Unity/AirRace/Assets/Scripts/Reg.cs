@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using UnityEngine.SceneManagement;
 public class Reg : MonoBehaviour
 {
     List<string> nevek = new List<string>();
@@ -21,6 +22,8 @@ public class Reg : MonoBehaviour
     bool kicsib = false;
     bool nagyb = false;
     bool szamb = false;
+    float kileptetes = 0;
+    bool regisztaltMar = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +33,11 @@ public class Reg : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (kileptetes+50>Time.time&&regisztaltMar==true)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Fomenu");
+        }
+        
     }
 
     public void inputNev(string input) {
@@ -153,10 +160,37 @@ public class Reg : MonoBehaviour
                                         {
 
                                             conn.Open();
-                                            string sql2 = $"INSERT INTO `kikepzes`(`userID`, `palya`, `tejesitve`) VALUES ('{id}','{1}','{0}')";
-                                            MySqlCommand cmd = new MySqlCommand(sql2, conn);
-                                            cmd.ExecuteNonQuery();
+                                            for (int i = 1; i < 3; i++)
+                                            {
+                                                string sql2 = $"INSERT INTO `kikepzes`(`userID`, `palya`, `tejesitve`) VALUES ('{id}','{i}','{0}')";
+                                                MySqlCommand cmd = new MySqlCommand(sql2, conn);
+                                                cmd.ExecuteNonQuery();
+                                            }
+                                            
                                             siker.text = "Sikeres regisztráció";
+                                        }
+                                        catch (System.Exception ex)
+                                        {
+                                            hiba.text = $"HIBA: {ex.ToString()}";
+                                            throw;
+                                        }
+                                        conn.Close();
+
+                                        //akadaly táblába pályák felvétele
+                                        try
+                                        {
+
+                                            conn.Open();
+                                            for (int i = 1; i < 4; i++)
+                                            {
+                                                string sql2 = $"INSERT INTO `akadaly`(`userID`, `palya`, `ido`, `teljesitve`) VALUES ('{id}','{i}','0','0')";
+                                                MySqlCommand cmd = new MySqlCommand(sql2, conn);
+                                                cmd.ExecuteNonQuery();
+                                            }
+
+                                            siker.text = "Sikeres regisztráció";
+                                            kileptetes = Time.time;
+                                            regisztaltMar = true;
                                         }
                                         catch (System.Exception ex)
                                         {
