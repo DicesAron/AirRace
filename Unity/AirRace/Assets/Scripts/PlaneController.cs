@@ -25,8 +25,14 @@ public class PlaneController : MonoBehaviour
     public GameObject s;
     public GameObject bf;
     public GameObject jf;
-    int felfele = 0;
+    public int felfele = 0;
     public bool leszalt = false;
+    public int forditas1 = 0;
+    public int forditas2 = 0;
+    public int forditas3 = 0;
+    public int forditas4 = 0;
+    public int forditas5 = 0;
+    public int forditas6 = 0;
     private float iranyithatosag {
         get {
             return (repulo.mass / 10f) * iranyithatosagE; 
@@ -69,8 +75,6 @@ public class PlaneController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             
-           // bf.transform.localEulerAngles = new Vector3(Mathf.Clamp(bf.transform.localEulerAngles.x, 0, 90),0, 0);
-            //jf.transform.localEulerAngles = new Vector3(Mathf.Clamp(jf.transform.localEulerAngles.x, -90, 0), 0, 0);
             if (kintvan==true)
             {
                 kintvan = false;
@@ -84,26 +88,147 @@ public class PlaneController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.W))
         {
-            
-                b.transform.Rotate(0f, 0f, -0.1f);
-                b.transform.localEulerAngles = new Vector3(0, 0, Mathf.Clamp(b.transform.localEulerAngles.z,0,-7));
-                j.transform.Rotate(0f, 0f, -0.1f);
-                j.transform.localEulerAngles = new Vector3(0, 0, Mathf.Clamp(j.transform.localEulerAngles.z, 0, -7));
-                bh.transform.Rotate(0.1f,0 , 0f);
-                bh.transform.localEulerAngles = new Vector3(Mathf.Clamp(jh.transform.localEulerAngles.y, -80, -90), - 90 , -90);
+            if (forditas1 < 8)
+            {
+                b.transform.Rotate(0f, 0f, -1f);
+                j.transform.Rotate(0f, 0f, -1f);
+                bh.transform.Rotate(0, 0, 0.5f);
+                jh.transform.Rotate(0f, 0f, 0.5f);
+                forditas1 += 1;
+            }
+               
+                
 
 
         }
         else
         {
-            if (b.transform.localRotation.z<0)
+            if (forditas1 != 0)
             {
-                b.transform.Rotate(0f, 0f, 0.2f);
-                j.transform.Rotate(0f, 0f, 0.2f);
-                bh.transform.Rotate(0f, -0.2f, 0f);
+                b.transform.Rotate(0f, 0f, 1f);
+                j.transform.Rotate(0f, 0f, 1f);
+                bh.transform.Rotate(0f, 0f, -0.5f);
+                jh.transform.Rotate(0f, 0f,-0.5f);
+                forditas1 -= 1;
             }
                 
             
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (forditas2 < 8)
+            {
+                b.transform.Rotate(0f, 0f, 1f);
+                j.transform.Rotate(0f, 0f, 1f);
+                bh.transform.Rotate(0, 0, -0.5f);
+                jh.transform.Rotate(0f, 0f, -0.5f);
+                forditas2 += 1;
+            }
+
+
+
+
+        }
+        else
+        {
+            if (forditas2 != 0)
+            {
+                b.transform.Rotate(0f, 0f, -1f);
+                j.transform.Rotate(0f, 0f, -1f);
+                bh.transform.Rotate(0f, 0f, 0.5f);
+                jh.transform.Rotate(0f, 0f, 0.5f);
+                forditas2 -= 1;
+            }
+
+
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            if (forditas3 < 8)
+            {
+                b.transform.Rotate(0f, 0f, -1f);
+                j.transform.Rotate(0f, 0f, 1f);
+                bh.transform.Rotate(0, 0, -0.5f);
+                jh.transform.Rotate(0f, 0f, 0.5f);
+                forditas3 += 1;
+            }
+
+
+
+
+        }
+        else
+        {
+            if (forditas3 != 0)
+            {
+                b.transform.Rotate(0f, 0f, 1f);
+                j.transform.Rotate(0f, 0f, -1f);
+                bh.transform.Rotate(0f, 0f, 0.5f);
+                jh.transform.Rotate(0f, 0f, -0.5f);
+                forditas3 -= 1;
+            }
+
+
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            if (forditas4 < 8)
+            {
+                b.transform.Rotate(0f, 0f, 1f);
+                j.transform.Rotate(0f, 0f, -1f);
+                bh.transform.Rotate(0, 0, 0.5f);
+                jh.transform.Rotate(0f, 0f, -0.5f);
+                forditas4 += 1;
+            }
+
+
+
+
+        }
+        else
+        {
+            if (forditas4 != 0)
+            {
+                b.transform.Rotate(0f, 0f, -1f);
+                j.transform.Rotate(0f, 0f, 1f);
+                bh.transform.Rotate(0f, 0f, -0.5f);
+                jh.transform.Rotate(0f, 0f, 0.5f);
+                forditas4 -= 1;
+            }
+
+
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (forditas5 < 8)
+            {
+                s.transform.Rotate(0f, 0.1f, 0f);
+                forditas5 += 1;
+            }
+        }
+        else
+        {
+            if (forditas5 != 0)
+            {
+                s.transform.Rotate(0f, -0.1f, 0f);
+                forditas5 -= 1;
+            }
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (forditas6 < 8)
+            {
+                s.transform.Rotate(0f, -0.1f, 0f);
+                forditas6 += 1;
+            }
+        }
+        else
+        {
+            if (forditas6 != 0)
+            {
+                s.transform.Rotate(0f, 0.1f, 0f);
+                forditas6 -= 1;
+            }
         }
         if (kintvan==false)
         {
@@ -138,7 +263,7 @@ public class PlaneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        kintvan = true;
     }
 
     // Update is called once per frame
