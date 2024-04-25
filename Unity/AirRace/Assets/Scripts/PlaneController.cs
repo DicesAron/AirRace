@@ -14,6 +14,7 @@ public class PlaneController : MonoBehaviour
     private float forgas;
     private float emelkedes;
     private float sik;
+    public bool kintvan;
     AudioSource hajtomu;
     Rigidbody repulo;
     [SerializeField] TextMeshProUGUI kijelzo;
@@ -22,6 +23,10 @@ public class PlaneController : MonoBehaviour
     public GameObject bh;
     public GameObject jh;
     public GameObject s;
+    public GameObject bf;
+    public GameObject jf;
+    int felfele = 0;
+    public bool leszalt = false;
     private float iranyithatosag {
         get {
             return (repulo.mass / 10f) * iranyithatosagE; 
@@ -34,6 +39,11 @@ public class PlaneController : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("sikertelen");
         }
+        else if (collision.collider.CompareTag("felszallo")&&felfele!=0)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("sikertelen");
+        }
+        
     }
 
     private void Awake()
@@ -52,7 +62,26 @@ public class PlaneController : MonoBehaviour
         else if (Input.GetKey(KeyCode.DownArrow)) toloero -= toloeroE;//sebesség csökkentés
         toloero = Mathf.Clamp(toloero, 0f, 100f);//Nem engedi hogy negatív vagy túl nagy legyen a sebesség
 
-
+        if (transform.position.y==0 && repulo.velocity.magnitude==0)
+        {
+            leszalt = true;
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            
+           // bf.transform.localEulerAngles = new Vector3(Mathf.Clamp(bf.transform.localEulerAngles.x, 0, 90),0, 0);
+            //jf.transform.localEulerAngles = new Vector3(Mathf.Clamp(jf.transform.localEulerAngles.x, -90, 0), 0, 0);
+            if (kintvan==true)
+            {
+                kintvan = false;
+            }
+            else
+            {
+                kintvan = true;
+            }
+            
+           
+        }
         if (Input.GetKey(KeyCode.W))
         {
             
@@ -75,6 +104,35 @@ public class PlaneController : MonoBehaviour
             }
                 
             
+        }
+        if (kintvan==false)
+        {
+            if (felfele<181)
+            {
+                bf.transform.Rotate(0.5f, 0f, 0f);
+                jf.transform.Rotate(-0.5f, 0f, 0f);
+                felfele += 1;
+                
+            }
+            else
+            {
+                
+            }
+            
+        }
+        else
+        {
+            if (bf.transform.localRotation.x >0)
+            {
+
+                bf.transform.Rotate(-0.5f, 0f, 0f);
+                jf.transform.Rotate(0.5f, 0f, 0f);
+                felfele -= 1;
+            }
+            else
+            {
+                
+            }
         }
     }
     // Start is called before the first frame update
