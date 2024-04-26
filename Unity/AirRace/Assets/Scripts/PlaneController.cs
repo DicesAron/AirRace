@@ -9,7 +9,7 @@ public class PlaneController : MonoBehaviour
     public float maxToloero = 100f;//Maximális tolóerõ érték
     public float iranyithatosagE = 15f;//mennyira irányítható a gép (minnél nagyobb annál gyorsabban reagál)
     public float felhajtoero = 200f;//változó ami meghatározza, hogy mekkora felhajtó erõt generáll a vadászgep
-
+    
     private float toloero;
     private float forgas;
     private float emelkedes;
@@ -68,9 +68,13 @@ public class PlaneController : MonoBehaviour
         else if (Input.GetKey(KeyCode.DownArrow)) toloero -= toloeroE;//sebesség csökkentés
         toloero = Mathf.Clamp(toloero, 0f, 100f);//Nem engedi hogy negatív vagy túl nagy legyen a sebesség
 
-        if (transform.position.y==0 && repulo.velocity.magnitude==0)
+        if (repulo.transform.position.y<3 && toloero==0)
         {
             leszalt = true;
+        }
+        else
+        {
+            leszalt = false;
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -252,7 +256,11 @@ public class PlaneController : MonoBehaviour
 
                 bf.transform.Rotate(-0.5f, 0f, 0f);
                 jf.transform.Rotate(0.5f, 0f, 0f);
-                felfele -= 1;
+                if (felfele>0)
+                {
+                    felfele -= 1;
+                }
+                
             }
             else
             {

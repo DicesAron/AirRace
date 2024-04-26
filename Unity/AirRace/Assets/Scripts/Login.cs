@@ -13,6 +13,7 @@ public class Login : MonoBehaviour
     string nev;
     string felhasznalo;
     public string userId;
+    [SerializeField] TextMeshProUGUI szoveg;
     // Start is called before the first frame update
     void Start()
     {

@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Fomenu.unity
     guid: 9c2a4d7cdbc89c84bad8d07fd36e7cff
   - enabled: 1
-    path: Assets/Scenes/palya1.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/Scenes/Regisztacio.unity
     guid: 8f9883f7869f1cc43b9d9cfe090f8656
   - enabled: 1
@@ -29,6 +26,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/sikeres.unity
     guid: 0a10c5a120bb0c84e807abaabd09f500
+  - enabled: 1
+    path: Assets/Scenes/palya2.unity
+    guid: 58325713224c41447b29acd8cdaa8b5f
+  - enabled: 1
+    path: Assets/Scenes/palya.unity
+    guid: 4fa419386b43dda43928fa0487f8be2d
+  - enabled: 1
+    path: Assets/Scenes/verseny1.unity
+    guid: c8620799107d4fe4390e1ea1c7c3d42f
+  - enabled: 1
+    path: Assets/Scenes/verseny2.unity
+    guid: ca8e32cd4ddbfc449bce8f24657c8c34
+  - enabled: 1
+    path: Assets/Scenes/verseny3.unity
+    guid: 8e417860e41beca44b14bc9d089b590f
   - enabled: 1
     path: Assets/Scenes/verseny.unity
     guid: 3d69d6bdd478bb445b1cd38953cf4f31

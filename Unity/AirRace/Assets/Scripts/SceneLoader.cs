@@ -30,8 +30,11 @@ public class SceneLoader : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Fomenu");
     }
-    
 
+    public void JatekMenuLoad()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("JatekMenu");
+    }
     public void KikepzesLoad()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("kikepzes");
