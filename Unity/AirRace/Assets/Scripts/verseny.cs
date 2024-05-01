@@ -13,7 +13,7 @@ public class verseny : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StreamReader fel = new StreamReader("Assets/felh/user.txt");
+        StreamReader fel = new StreamReader("AirRace_Data/user.txt");
         felhID = fel.ReadToEnd();
     }
 
@@ -106,7 +106,7 @@ public class verseny : MonoBehaviour
 
             string felhID;
             conn.Open();
-            StreamReader fel = new StreamReader("Assets/felh/user.txt");
+            StreamReader fel = new StreamReader("AirRace_Data/user.txt");
             felhID = fel.ReadToEnd();
             string sql = $"SELECT `teljesitve` FROM `akadaly` WHERE `userID`='{felhID}' AND `palya` = '2';";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -125,11 +125,30 @@ public class verseny : MonoBehaviour
         if (teljesitve == "True")
         {
             palya = 3;
-            spec.text = $"Küldetés:\n Áthaladási zóna érintése (5db)\n Célpont kiiktatása (1db)";
+            spec.text = $"Küldetés:\n Áthaladási zóna érintése (3db)\n Célpont kiiktatása (1db) \n leszállás";
         }
         else
         {
             spec.text = $"Teljesítení kell az elõzõ pályát";
+        }
+    }
+    public void betolt()
+    {
+        if (palya == 0)
+        {
+            spec.text = "Nem választott pályát";
+        }
+        else if (palya == 1)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("verseny1");
+        }
+        else if (palya == 2)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("verseny2");
+        }
+        else if (palya == 3)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("verseny3");
         }
     }
 }

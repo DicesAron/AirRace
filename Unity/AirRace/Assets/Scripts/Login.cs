@@ -9,11 +9,11 @@ using UnityEngine.SceneManagement;
 public class Login : MonoBehaviour
 {
     string connStr = "server=localhost;user=root;database=airrace;port=3306;password=";
-    string pass;
+    public string pass="";
     string nev;
     string felhasznalo;
     public string userId;
-    [SerializeField] TextMeshProUGUI szoveg;
+    [SerializeField] TextMeshProUGUI hiba;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,30 +50,37 @@ public class Login : MonoBehaviour
             }
             rdr.Close();
         }
-        catch (System.Exception)
+        catch (System.Exception ex)
         {
 
-            //hiba.text = $"HIBA: {ex.ToString()}";
+            hiba.text = $"HIBA: {ex.ToString()}";
         }
         conn.Close();
-        if (felhasznalo != "")
+        if (nev!="" || pass!="")
         {
-            if (felhasznalo.Split(' ')[1]==pass)
+            if (felhasznalo != null)
             {
-                StreamWriter fel = new StreamWriter("Assets/felh/user.txt");
-                fel.Write(felhasznalo.Split(' ')[0]);
-                fel.Close();
-                UnityEngine.SceneManagement.SceneManager.LoadScene("JatekMenu");
-                
+                if (felhasznalo.Split(' ')[1] == pass)
+                {
+                    StreamWriter fel = new StreamWriter("AirRace_Data/user.txt");
+                    fel.Write(felhasznalo.Split(' ')[0]);
+                    fel.Close();
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("JatekMenu");
+
+                }
+                else
+                {
+                    hiba.text = $"HIBA: Rossz jelszó";
+                }
             }
             else
             {
-                //hiba.text = $"HIBA: Rossz jelszó";
+                hiba.text = $"HIBA: Nincs ilyen felhasználó";
             }
         }
         else
         {
-            //hiba.text = $"HIBA: Nincs ilyen felhasználó";
+            hiba.text = "HIBA: Minden mezõt ki kell tölteni";
         }
     }
 }

@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StreamReader fel = new StreamReader("Assets/felh/user.txt");
+        StreamReader fel = new StreamReader("AirRace_Data/user.txt");
         felhID = fel.ReadToEnd();
     }
 
-    public bool lekerdez(int palya,string ido) {
+    public void lekerdez(int palya,string ido) {
         string connStr = $"server=localhost;user=root;database=airrace;port=3306;password=";
         MySqlConnection conn = new MySqlConnection(connStr);
         string lekertido="";
@@ -50,19 +50,19 @@ public class GameManager : MonoBehaviour
         if (voltmar == 0)
         {
             kisebb = true;
-            return kisebb;
+           
         }
         else
         {
             if (Convert.ToInt32(lekertido.Split(':')[1]) <= Convert.ToInt32(ido.Split(':')[0]) && Convert.ToInt32(lekertido.Split(':')[2]) <= Convert.ToInt32(ido.Split(':')[1]))
             {
                 kisebb = false;
-                return kisebb;
+                
             }
             else
             {
                 kisebb = true;
-                return kisebb;
+                
             }
         }
         
@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
                     string connStr = $"server=localhost;user=root;database=airrace;port=3306;password=";
                     MySqlConnection conn = new MySqlConnection(connStr);
                     conn.Open();
-                    string sql2 = $"UPDATE `akadaly` SET `ido`='{feltido}',`teljesitve`='1' WHERE `userID`='{felhID}' AND	palya='1'";
+                    string sql2 = $"UPDATE `akadaly` SET `ido`='00:{feltido}',`teljesitve`='1' WHERE `userID`='{felhID}' AND	palya='1'";
                     MySqlCommand cmd = new MySqlCommand(sql2, conn);
                     cmd.ExecuteNonQuery();
                     allas = 0;
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
                     string connStr = $"server=localhost;user=root;database=airrace;port=3306;password=";
                     MySqlConnection conn = new MySqlConnection(connStr);
                     conn.Open();
-                    string sql2 = $"UPDATE `akadaly` SET `ido`='{feltido}',`teljesitve`='1' WHERE `userID`='{felhID}' AND	palya='2'";
+                    string sql2 = $"UPDATE `akadaly` SET `ido`='00:{feltido}',`teljesitve`='1' WHERE `userID`='{felhID}' AND	palya='2'";
                     MySqlCommand cmd = new MySqlCommand(sql2, conn);
                     cmd.ExecuteNonQuery();
                     allas = 0;
@@ -166,10 +166,10 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        else if (palya.palyaid == 5 && repulo.leszalt == true)
+        else if (palya.palyaid == 5)
         {
             szoveg.text = $"Állapot: {allas}/5 \n Idõ: {string.Format("{0:00}:{1:00}", perc, masodperc)}";
-            if (allas == 4)
+            if (allas == 4 && repulo.leszalt == true)
             {
 
 
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
                     string connStr = $"server=localhost;user=root;database=airrace;port=3306;password=";
                     MySqlConnection conn = new MySqlConnection(connStr);
                     conn.Open();
-                    string sql2 = $"UPDATE `akadaly` SET `ido`='{feltido}',`teljesitve`='1' WHERE `userID`='{felhID}' AND	palya='3'";
+                    string sql2 = $"UPDATE `akadaly` SET `ido`='00:{feltido}',`teljesitve`='1' WHERE `userID`='{felhID}' AND	palya='3'";
                     MySqlCommand cmd = new MySqlCommand(sql2, conn);
                     cmd.ExecuteNonQuery();
                     allas = 0;

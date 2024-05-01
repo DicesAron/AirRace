@@ -57,8 +57,8 @@ public class Reg : MonoBehaviour
     }
 
     public void regisztralas() {
-        siker.text = ".";
-        if (nev != "" && email != "" && pass1 != "" && pass2 != "")
+        siker.text = "";
+        if (nev != null && email != null && pass1 != null && pass2 != null)
         {
             
             if (nev.Length < 13)

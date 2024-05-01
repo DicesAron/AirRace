@@ -36,7 +36,7 @@ public class Kikepzes : MonoBehaviour
             
             string felhID;
             conn.Open();
-            StreamReader fel = new StreamReader("Assets/felh/user.txt");
+            StreamReader fel = new StreamReader("AirRace_Data/user.txt");
             felhID = fel.ReadToEnd();
             string sql = $"SELECT `tejesitve` FROM `kikepzes` WHERE `palya`='1' AND `userID`='{felhID}';";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
