@@ -15,7 +15,7 @@ public class erdekesseg : MonoBehaviour
         erdekesSzoveg.Add("Néhány országban még ma is alkalmazzák.\nEzek az országok közé tartozik India, Észak-Korea\nés egyes afrikai országok.\n\nRelatív olcsó fentartási költsége miatt,\nnagyon népszerû volt, ezért sokat gyártottak belõle.(több mint 11 ezer darabot)");
         erdekesSzoveg.Add("Híres volt sebességérõl és manõverezõképességérõl.\nKépes volt a hangsebesség töbszörösével repülni,\nés sok verziója magas teljesítményû hajtõmûveket\nhasznált.");
         erdekesSzoveg.Add("Arra tervezték, hogy esetleges támadákor\ngyorsan felszáljon és az ellenséges vadászgépeket és bombázókat lelõje, és visszatérjen a bázisra.\nEz a formájában is látszik, hisz egy nagy hajtómû köré tervezték a gépet, úgy hogy a felülete lehetõ legkisebb legyen.");
-        erdekesSzoveg.Add("Nagyon sokoldalú gép volt, különbözö verziói számos szerepet töltöttek be.\nEbbe beleértve a vadász, bombazó, felderítõ és\na vadászbombázó szerepeket is.\nEz az egyszerûsége és a könnyû módothasága miatt köszönhetõ.");
+        erdekesSzoveg.Add("Nagyon sokoldalú gép volt, különbözö verziói számos szerepet töltöttek be.\nEbbe beleértve a vadász, bombazó, felderítõ és\na vadászbombázó szerepeket is.\nEz az egyszerûsége és a könnyû módosíthatósága miatt köszönhetõ.");
         szoveg.text = erdekesSzoveg[helyzet];
         balgomb.SetActive(false);
     }
